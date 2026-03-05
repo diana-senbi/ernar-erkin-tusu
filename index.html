@@ -12,528 +12,244 @@
     }
     *{box-sizing:border-box}
     body{
-      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      margin:0; font-family: system-ui, -apple-system, sans-serif;
       background: radial-gradient(1200px 600px at 20% 0%, #18235a 0%, var(--bg) 55%, #050815 100%);
       color:var(--text);
     }
     header{
-      padding:28px 18px 18px;
-      border-bottom:1px solid rgba(255,255,255,.06);
-      backdrop-filter: blur(10px);
-      position: sticky; top:0; z-index:5;
-      background: rgba(11,16,32,.7);
+      padding:20px; border-bottom:1px solid rgba(255,255,255,.06);
+      backdrop-filter: blur(10px); position: sticky; top:0; z-index:10;
+      background: rgba(11,16,32,.8);
     }
     .wrap{max-width:1100px;margin:0 auto}
-    .top{
-      display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap;
-    }
-    h1{font-size:20px;margin:0; letter-spacing:.2px}
+    .top{display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap;}
+    h1{font-size:18px;margin:0;}
     .badge{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:8px 10px; border:1px solid rgba(255,255,255,.10);
-      border-radius:999px; background: rgba(255,255,255,.04);
-      color:var(--muted); font-size:13px;
+      padding:6px 12px; border:1px solid rgba(255,255,255,.1);
+      border-radius:20px; background: rgba(255,255,255,.04);
+      color:var(--muted); font-size:12px;
     }
-    nav{
-      display:flex; gap:10px; flex-wrap:wrap;
-    }
+    nav{display:flex; gap:8px;}
     nav button{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color:var(--text);
-      padding:8px 10px; border-radius:10px;
-      cursor:pointer; transition:.15s;
-      font-size:13px;
+      border:1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04);
+      color:var(--text); padding:8px 14px; border-radius:8px;
+      cursor:pointer; transition:0.2s;
     }
-    nav button:hover{transform: translateY(-1px); border-color: rgba(124,92,255,.6)}
-    nav button.active{background: rgba(124,92,255,.16); border-color: rgba(124,92,255,.7)}
-    main{padding:18px}
-    .grid{
-      display:grid; grid-template-columns: 1.2fr .8fr; gap:14px;
-    }
-    @media (max-width: 920px){ .grid{grid-template-columns:1fr} }
+    nav button.active{background: var(--accent); border-color: var(--accent);}
+    main{padding:20px}
+    .grid{display:grid; grid-template-columns: 1.2fr 0.8fr; gap:16px;}
+    @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:18px; padding:14px;
-      box-shadow: 0 18px 45px rgba(0,0,0,.25);
-    }
-    .card h2{margin:0 0 10px;font-size:16px}
-    .muted{color:var(--muted)}
-    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .pill{
-      padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      font-size:12px; color:var(--muted);
+      background: var(--card); border:1px solid rgba(255,255,255,.08);
+      border-radius:16px; padding:20px; margin-bottom:16px;
     }
     .formula{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      background: rgba(0,0,0,.28);
-      border:1px solid rgba(255,255,255,.10);
-      padding:10px 12px; border-radius:14px;
-      overflow:auto;
+      font-family: monospace; background: #000; padding:12px;
+      border-radius:8px; margin:10px 0; text-align:center; font-size:1.2em;
     }
-    .two{
-      display:grid; grid-template-columns: 1fr 1fr; gap:10px;
-    }
-    @media (max-width: 700px){ .two{grid-template-columns:1fr} }
-    .btn{
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color:var(--text);
-      padding:10px 12px; border-radius:12px;
-      cursor:pointer; transition:.15s;
-      font-weight:600;
-    }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(46,229,157,.65)}
-    .btn.primary{background: rgba(124,92,255,.22); border-color: rgba(124,92,255,.70)}
-    .btn.danger{background: rgba(255,92,122,.15); border-color: rgba(255,92,122,.55)}
-    .input{
-      width:100%;
-      padding:10px 12px; border-radius:12px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.22);
-      color:var(--text);
-      outline:none;
-    }
-    .label{font-size:12px;color:var(--muted); margin:6px 0}
     canvas{
-      width:100%; height:260px;
-      background: radial-gradient(600px 260px at 40% 0%, rgba(124,92,255,.12), rgba(0,0,0,.20));
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:16px;
-      display:block;
+      width:100%; height:300px; background: #050815;
+      border-radius:12px; border:1px solid var(--line);
     }
-    .small{font-size:12.5px; line-height:1.45}
-    .ok{color:var(--accent2); font-weight:700}
-    .bad{color:var(--danger); font-weight:700}
-    details{
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:14px; padding:10px 12px;
-      background: rgba(0,0,0,.16);
+    .input-group{margin-bottom:12px;}
+    input{
+      width:100%; padding:8px; border-radius:6px; border:1px solid var(--line);
+      background: #080c1a; color:#fff;
     }
-    details summary{cursor:pointer; font-weight:700}
-    .hide{display:none}
-    .kpi{
-      display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;
+    .btn{
+      padding:10px 16px; border-radius:8px; border:none; cursor:pointer; font-weight:bold;
     }
-    @media (max-width: 700px){ .kpi{grid-template-columns:1fr} }
-    .kpi .box{
-      padding:10px 12px; border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-    }
-    .kpi .num{font-size:16px;font-weight:800}
-    .footer{
-      margin:16px 0 30px; color:rgba(255,255,255,.55); font-size:12px;
-    }
-    .svgbox{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.16);
-      border-radius:16px; padding:10px;
-    }
+    .primary{background: var(--accent); color:white;}
+    .danger{background: var(--danger); color:white;}
+    .hide{display:none;}
   </style>
 </head>
 <body>
+
 <header>
   <div class="wrap top">
     <div>
-      <h1>Импульстің сақталу заңы — интерактивті оқу сайты</h1>
-      <div class="badge">📌 Тақырып: <b>p = m·v</b> және <b>Σp = const</b></div>
+      <h1>Физика: Импульстің сақталу заңы</h1>
+      <div class="badge">p = m · v</div>
     </div>
     <nav>
-      <button class="tab active" data-tab="theory">Теория</button>
-      <button class="tab" data-tab="sim">Анимация</button>
-      <button class="tab" data-tab="graphs">Графиктер</button>
+      <button class="tab active" data-tab="sim">Анимация</button>
+      <button class="tab" data-tab="theory">Теория</button>
       <button class="tab" data-tab="tasks">Есептер</button>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
-  <!-- THEORY -->
-  <section id="theory" class="tabpage">
+  <section id="sim" class="tabpage">
     <div class="grid">
       <div class="card">
-        <h2>1) Негізгі ұғым</h2>
-        <p class="small">
-          <b>Импульс</b> — дененің қозғалыс мөлшерін сипаттайтын физикалық шама.
-          Ол дененің массасы мен жылдамдығының көбейтіндісіне тең:
-        </p>
-        <div class="formula">p = m · v</div>
-        <p class="small muted">
-          Мұнда: p — импульс (кг·м/с), m — масса (кг), v — жылдамдық (м/с).
-          Импульс — <b>векторлық</b> шама (бағыты бар).
-        </p>
-
-        <h2 style="margin-top:14px;">2) Импульстің сақталу заңы</h2>
-        <p class="small">
-          Егер жүйеге әсер ететін <b>сыртқы күштердің тең әсерлісі нөлге жуық</b> болса,
-          онда жүйедегі барлық денелердің импульстерінің қосындысы өзгермейді:
-        </p>
-        <div class="formula">Σp(бастапқы) = Σp(соңғы)</div>
-
-        <div class="two" style="margin-top:10px;">
-          <div class="svgbox">
-            <div class="label">Сурет: 2 дененің соқтығысуы (1D)</div>
-            <svg viewBox="0 0 520 160" width="100%" height="120" aria-label="collision">
-              <defs>
-                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#7c5cff" stop-opacity="0.85"/>
-                  <stop offset="1" stop-color="#2ee59d" stop-opacity="0.7"/>
-                </linearGradient>
-              </defs>
-              <rect x="10" y="20" width="500" height="120" rx="18" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.10)"/>
-              <rect x="95" y="70" width="90" height="40" rx="10" fill="url(#g1)"/>
-              <rect x="330" y="70" width="90" height="40" rx="10" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.20)"/>
-              <text x="112" y="95" fill="#eaf0ff" font-size="14" font-weight="700">m₁</text>
-              <text x="348" y="95" fill="#eaf0ff" font-size="14" font-weight="700">m₂</text>
-              <line x1="70" y1="90" x2="95" y2="90" stroke="#2ee59d" stroke-width="4"/>
-              <polygon points="95,90 82,82 82,98" fill="#2ee59d"/>
-              <text x="40" y="60" fill="#9fb0ff" font-size="12">v₁ →</text>
-
-              <line x1="420" y1="90" x2="445" y2="90" stroke="#7c5cff" stroke-width="4"/>
-              <polygon points="445,90 432,82 432,98" fill="#7c5cff"/>
-              <text x="408" y="60" fill="#9fb0ff" font-size="12">v₂ →</text>
-
-              <text x="20" y="38" fill="#9fb0ff" font-size="12">Жүйе сыртқы күшсіз (идеал)</text>
-            </svg>
-          </div>
-
-          <div class="svgbox">
-            <div class="label">Есте сақтауға ыңғайлы қысқа тұжырым</div>
-            <div class="small">
-              ✅ <b>Сыртқы күш жоқ</b> → жалпы импульс өзгермейді.<br/>
-              ✅ Соқтығысқаннан кейін жылдамдықтар өзгеруі мүмкін, бірақ <b>Σp тұрақты</b>.<br/>
-              ⚠️ Сыртқы күш бар болса (үйкеліс, тежегіш, тартылыс әсері) — заң <b>жүйе дұрыс таңдалса</b> орындалады.
-            </div>
-          </div>
-        </div>
-
-        <details style="margin-top:12px;">
-          <summary>Қай кезде қолданамыз?</summary>
-          <div class="small" style="margin-top:8px;">
-            • Соқтығысу (серпімді/серпімсіз) есептері<br/>
-            • Атылу (қару, ракета, кері тебілу)<br/>
-            • Екі дене ажырауы, арқан үзілуі сияқты жүйелік процестер<br/>
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <h2>Жылдам ереже + өлшем бірлік</h2>
-        <div class="kpi">
-          <div class="box">
-            <div class="muted">Импульс</div>
-            <div class="num">p</div>
-            <div class="small muted">кг·м/с</div>
-          </div>
-          <div class="box">
-            <div class="muted">Масса</div>
-            <div class="num">m</div>
-            <div class="small muted">кг</div>
-          </div>
-          <div class="box">
-            <div class="muted">Жылдамдық</div>
-            <div class="num">v</div>
-            <div class="small muted">м/с</div>
-          </div>
-        </div>
-
-        <h2 style="margin-top:14px;">Бір өлшемді соқтығыс теңдеуі</h2>
-        <div class="small">
-          Екі дене бір түзудің бойымен қозғалады:
-        </div>
-        <div class="formula" style="margin-top:8px;">
-          m₁v₁ + m₂v₂ = m₁v₁′ + m₂v₂′
-        </div>
-        <div class="small muted">
-          Мұндағы v′ — соқтығысудан кейінгі жылдамдық.
-        </div>
-
-        <h2 style="margin-top:14px;">Серпімсіз соқтығыс (жабысады)</h2>
-        <div class="formula">
-          v = (m₁v₁ + m₂v₂) / (m₁ + m₂)
-        </div>
-
-        <details style="margin-top:12px;">
-          <summary>Қателіктер қайдан шығады?</summary>
-          <div class="small" style="margin-top:8px;">
-            • Бағытты ұмытып, жылдамдықты оң/теріс таңбамен алмау<br/>
-            • Жүйені дұрыс таңдамау (сыртқы күштер бар кезде)<br/>
-            • Серпімді/серпімсіз шартын шатастыру<br/>
-          </div>
-        </details>
-      </div>
-    </div>
-    <div class="footer">© Оқу мақсатында. Бір файлдық сайт (index.html).</div>
-  </section>
-
-  <!-- SIM -->
-  <section id="sim" class="tabpage hide">
-    <div class="grid">
-      <div class="card">
-        <h2>Анимация: 1D соқтығыс симуляторы</h2>
-        <p class="small muted">Массалар мен жылдамдықтарды өзгертіп, «Бастау» бас. Бағыт үшін жылдамдық теріс болуы мүмкін.</p>
-        <canvas id="simCanvas" width="1000" height="520"></canvas>
-
-        <div class="two" style="margin-top:10px;">
-          <div>
-            <div class="label">Соқтығыс түрі</div>
-            <div class="row">
-              <button class="btn primary" id="modeElastic">Серпімді</button>
-              <button class="btn" id="modeInelastic">Серпімсіз (жабысады)</button>
-            </div>
-          </div>
-          <div>
-            <div class="label">Басқару</div>
-            <div class="row">
-              <button class="btn primary" id="btnStart">Бастау</button>
-              <button class="btn" id="btnPause">Кідірту</button>
-              <button class="btn danger" id="btnReset">Қайта бастау</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="two" style="margin-top:10px;">
-          <div>
-            <div class="label">m₁ (кг)</div>
-            <input class="input" id="m1" type="number" step="0.1" value="2" />
-          </div>
-          <div>
-            <div class="label">v₁ (м/с)</div>
-            <input class="input" id="v1" type="number" step="0.1" value="3" />
-          </div>
-          <div>
-            <div class="label">m₂ (кг)</div>
-            <input class="input" id="m2" type="number" step="0.1" value="1" />
-          </div>
-          <div>
-            <div class="label">v₂ (м/с)</div>
-            <input class="input" id="v2" type="number" step="0.1" value="0" />
-          </div>
+        <canvas id="simCanvas"></canvas>
+        <div style="margin-top:15px; display:flex; gap:10px;">
+          <button class="btn primary" id="btnStart">Бастау</button>
+          <button class="btn" id="btnReset">Қайта орнату</button>
+          <select id="mode" class="btn">
+            <option value="elastic">Серпімді</option>
+            <option value="inelastic">Серпімсіз (Жабысу)</option>
+          </select>
         </div>
       </div>
-
       <div class="card">
-        <h2>Нәтижелер (реал-тайм)</h2>
-        <div class="kpi">
-          <div class="box">
-            <div class="muted">Σp бастапқы</div>
-            <div class="num" id="pInit">—</div>
-            <div class="small muted">кг·м/с</div>
+        <h3>Параметрлер</h3>
+        <div class="grid" style="grid-template-columns: 1fr 1fr;">
+          <div class="input-group">
+            <label>m1 (кг)</label>
+            <input type="number" id="m1" value="2">
           </div>
-          <div class="box">
-            <div class="muted">Σp соңғы</div>
-            <div class="num" id="pFin">—</div>
-            <div class="small muted">кг·м/с</div>
+          <div class="input-group">
+            <label>v1 (м/с)</label>
+            <input type="number" id="v1" value="3">
           </div>
-          <div class="box">
-            <div class="muted">Айырма</div>
-            <div class="num" id="pDiff">—</div>
-            <div class="small muted">кг·м/с</div>
+          <div class="input-group">
+            <label>m2 (кг)</label>
+            <input type="number" id="m2" value="4">
+          </div>
+          <div class="input-group">
+            <label>v2 (м/с)</label>
+            <input type="number" id="v2" value="-1">
           </div>
         </div>
-
-        <details style="margin-top:12px;" open>
-          <summary>Физикалық түсіндірме</summary>
-          <div class="small" style="margin-top:8px;">
-            Бұл модельде біз сыртқы күштер жоқ деп аламыз (үйкеліс елемейміз). Сондықтан жалпы импульс
-            соқтығысқа дейін де, кейін де тұрақты болуы керек. <br/><br/>
-            <b>Серпімді соқтығыста</b> импульс те, кинетикалық энергия да (идеалда) сақталады. <br/>
-            <b>Серпімсіз соқтығыста</b> импульс сақталады, бірақ энергияның бір бөлігі ішкі энергияға (жылу, деформация) кетеді.
-          </div>
-        </details>
-
-        <details style="margin-top:10px;">
-          <summary>Есептеу формулалары</summary>
-          <div class="small" style="margin-top:8px;">
-            <div class="formula">p = m·v</div>
-            <div class="formula" style="margin-top:8px;">Σp = m₁v₁ + m₂v₂</div>
-            <div class="small muted" style="margin-top:8px;">
-              Серпімсіз (жабысады): <b>v = (m₁v₁ + m₂v₂)/(m₁+m₂)</b><br/>
-              Серпімді (1D) формулалар симулятор ішінде қолданылады.
-            </div>
-          </div>
-        </details>
+        <hr style="opacity:0.1">
+        <p>Жалпы импульс: <span id="pTotalText" style="color:var(--accent2)">0</span> кг·м/с</p>
       </div>
     </div>
   </section>
 
-  <!-- GRAPHS -->
-  <section id="graphs" class="tabpage hide">
-    <div class="grid">
-      <div class="card">
-        <h2>График: импульс және энергия уақыт бойынша</h2>
-        <p class="small muted">Бұл бөлім симулятордағы қозғалыс бойынша график салады (Canvas). Алдымен «Анимация» бөлімінде бастауға болады.</p>
-        <canvas id="graphCanvas" width="1000" height="520"></canvas>
-
-        <div class="row" style="margin-top:10px;">
-          <button class="btn primary" id="btnGraphDraw">Графикті жаңарту</button>
-          <button class="btn" id="btnGraphClear">Тазарту</button>
-        </div>
-
-        <details style="margin-top:12px;" open>
-          <summary>Графикте не көресің?</summary>
-          <div class="small" style="margin-top:8px;">
-            • <b>Σp(t)</b> — тұрақты сызыққа жуық болуы керек.<br/>
-            • <b>K(t)</b> (кинетикалық энергия) — серпімдіде тұрақтырақ, серпімсізде төмендейді.
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <h2>Жылдам нұсқаулық</h2>
-        <div class="small">
-          1) «Анимация» бөліміне өтіп параметрлерді қой.<br/>
-          2) «Бастау» басып, соқтығысуды көр.<br/>
-          3) Мұнда қайта келіп «Графикті жаңарту» бас.<br/><br/>
-          Егер график бос болса — симуляция әлі жүрмеген болуы мүмкін немесе «Тазарту» басылып кеткен.
-        </div>
-        <div class="footer">Кеңес: v₂-ні теріс қылып қойсаң, қарсы бағыттағы қозғалыс шығады.</div>
-      </div>
+  <section id="theory" class="tabpage hide">
+    <div class="card">
+      <h2>Теориялық мәлімет</h2>
+      <p>Дене импульсі — бұл дененің механикалық қозғалысының өлшемі болып табылатын векторлық физикалық шама.</p>
+      <div class="formula">p = m · v</div>
+      <p><b>Импульстің сақталу заңы:</b> Тұйық жүйедегі денелердің импульстерінің векторлық қосындысы тұрақты болады.</p>
+      <div class="formula">m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'</div>
     </div>
   </section>
 
-  <!-- TASKS -->
   <section id="tasks" class="tabpage hide">
     <div class="card">
-      <h2>Есептер (оқушы жауап жазады → тексереді → түсіндіреді)</h2>
-      <p class="small muted">Жауапты сан түрінде енгіз. Қажет болса бөлшек қолдан (мысалы: 2.5).</p>
-
-      <div id="taskList" class="two"></div>
-
-      <div class="footer">Барлығы: 3 есеп. Қаласаң мен 10–15 есепке дейін кеңейтіп берем.</div>
+      <h3>Өзіңді тексер</h3>
+      <p>Массасы 2 кг дене 4 м/с жылдамдықпен қозғалып, тыныштықта тұрған массасы 2 кг денемен <b>серпімсіз</b> соқтығысты. Олардың бірлескен жылдамдығы қандай?</p>
+      <input type="number" id="quizAns" placeholder="Жауабы...">
+      <button class="btn primary" onclick="checkQuiz()">Тексеру</button>
+      <p id="quizFeedback"></p>
     </div>
   </section>
 </main>
 
 <script>
-/* -----------------------
-   TAB NAVIGATION
------------------------- */
-const tabs = document.querySelectorAll(".tab");
-const pages = document.querySelectorAll(".tabpage");
-tabs.forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    tabs.forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    const id = btn.dataset.tab;
-    pages.forEach(p=>p.classList.add("hide"));
-    document.getElementById(id).classList.remove("hide");
+// --- NAVIGATION ---
+const tabs = document.querySelectorAll('.tab');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('.tabpage').forEach(p => p.classList.add('hide'));
+    document.getElementById(tab.dataset.tab).classList.remove('hide');
   });
 });
 
-/* -----------------------
-   SIMULATION (1D)
------------------------- */
-const simCanvas = document.getElementById("simCanvas");
-const sctx = simCanvas.getContext("2d");
+// --- SIMULATION ---
+const canvas = document.getElementById('simCanvas');
+const ctx = canvas.getContext('2d');
+let animationId;
 
-let sim = {
-  running:false,
-  paused:false,
-  mode:"elastic", // elastic | inelastic
-  t:0,
-  dt:0.016,
-  // positions in meters-like units (screen mapped)
-  x1: 1.5, x2: 6.5,
-  v1: 3, v2: 0,
-  m1: 2, m2: 1,
-  collided:false,
-  // store history for graphs
-  hist: [] // {t, pTotal, kTotal}
+let state = {
+  running: false,
+  m1: 2, v1: 3, x1: 50,
+  m2: 4, v2: -1, x2: 250,
+  mode: 'elastic'
 };
 
-function readInputs(){
-  sim.m1 = clampNum(parseFloat(document.getElementById("m1").value), 0.1, 100);
-  sim.v1 = clampNum(parseFloat(document.getElementById("v1").value), -20, 20);
-  sim.m2 = clampNum(parseFloat(document.getElementById("m2").value), 0.1, 100);
-  sim.v2 = clampNum(parseFloat(document.getElementById("v2").value), -20, 20);
+function initCanvas() {
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
 }
-function clampNum(x, a, b){
-  if(!Number.isFinite(x)) return a;
-  return Math.max(a, Math.min(b, x));
-}
-function resetSim(){
-  readInputs();
-  sim.running=false; sim.paused=false;
-  sim.t=0;
-  sim.x1=1.5; sim.x2=6.5;
-  sim.collided=false;
-  sim.hist = [];
-  updateKPIs(true);
-  drawSim();
-}
-function startSim(){
-  readInputs();
-  sim.running=true;
-  sim.paused=false;
-  sim.t=0;
-  sim.x1=1.5; sim.x2=6.5;
-  sim.collided=false;
-  sim.hist = [];
-}
-function togglePause(){
-  if(!sim.running) return;
-  sim.paused = !sim.paused;
-}
-function setMode(mode){
-  sim.mode = mode;
-  document.getElementById("modeElastic").classList.toggle("primary", mode==="elastic");
-  document.getElementById("modeInelastic").classList.toggle("primary", mode==="inelastic");
-  // keep UI consistent
-  document.getElementById("modeElastic").classList.toggle("btn", true);
-  document.getElementById("modeInelastic").classList.toggle("btn", true);
-  updateKPIs();
-}
-document.getElementById("btnStart").addEventListener("click", startSim);
-document.getElementById("btnPause").addEventListener("click", togglePause);
-document.getElementById("btnReset").addEventListener("click", resetSim);
-document.getElementById("modeElastic").addEventListener("click", ()=>setMode("elastic"));
-document.getElementById("modeInelastic").addEventListener("click", ()=>setMode("inelastic"));
-setMode("elastic");
+window.addEventListener('resize', initCanvas);
+initCanvas();
 
-function pTotal(m1,v1,m2,v2){ return m1*v1 + m2*v2; }
-function kTotal(m1,v1,m2,v2){ return 0.5*m1*v1*v1 + 0.5*m2*v2*v2; }
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  // Track line
+  ctx.strokeStyle = '#26305b';
+  ctx.beginPath(); ctx.moveTo(0, 200); ctx.lineTo(canvas.width, 200); ctx.stroke();
 
-// Elastic collision formulas in 1D:
-function elasticAfter(m1,v1,m2,v2){
-  const v1p = ((m1 - m2)/(m1 + m2))*v1 + (2*m2/(m1 + m2))*v2;
-  const v2p = (2*m1/(m1 + m2))*v1 + ((m2 - m1)/(m1 + m2))*v2;
-  return {v1p, v2p};
-}
-function inelasticAfter(m1,v1,m2,v2){
-  const v = (m1*v1 + m2*v2)/(m1+m2);
-  return {v1p:v, v2p:v};
+  // Body 1
+  ctx.fillStyle = '#7c5cff';
+  ctx.fillRect(state.x1, 160, 40, 40);
+  ctx.fillStyle = 'white';
+  ctx.fillText(state.m1 + 'kg', state.x1 + 10, 155);
+
+  // Body 2
+  ctx.fillStyle = '#2ee59d';
+  ctx.fillRect(state.x2, 160, 40, 40);
+  ctx.fillStyle = 'white';
+  ctx.fillText(state.m2 + 'kg', state.x2 + 10, 155);
+
+  if (state.running) {
+    state.x1 += state.v1;
+    state.x2 += state.v2;
+
+    // Collision Check
+    if (Math.abs(state.x1 - state.x2) < 40) {
+      if (state.mode === 'elastic') {
+        let v1_new = ((state.m1 - state.m2) * state.v1 + 2 * state.m2 * state.v2) / (state.m1 + state.m2);
+        let v2_new = (2 * state.m1 * state.v1 + (state.m2 - state.m1) * state.v2) / (state.m1 + state.m2);
+        state.v1 = v1_new;
+        state.v2 = v2_new;
+      } else {
+        let commonV = (state.m1 * state.v1 + state.m2 * state.v2) / (state.m1 + state.m2);
+        state.v1 = commonV;
+        state.v2 = commonV;
+      }
+      // Separation to avoid sticking
+      state.x1 -= 1; state.x2 += 1;
+    }
+    animationId = requestAnimationFrame(draw);
+  }
 }
 
-function updateKPIs(forceInit=false){
-  readInputs();
-  const pI = pTotal(sim.m1, sim.v1, sim.m2, sim.v2);
-  document.getElementById("pInit").textContent = round2(pI);
+document.getElementById('btnStart').addEventListener('click', () => {
+  state.m1 = parseFloat(document.getElementById('m1').value);
+  state.v1 = parseFloat(document.getElementById('v1').value);
+  state.m2 = parseFloat(document.getElementById('m2').value);
+  state.v2 = parseFloat(document.getElementById('v2').value);
+  state.mode = document.getElementById('mode').value;
+  state.running = true;
+  
+  let p = state.m1 * state.v1 + state.m2 * state.v2;
+  document.getElementById('pTotalText').innerText = p.toFixed(2);
+  
+  cancelAnimationFrame(animationId);
+  draw();
+});
 
-  // estimate "final" from current mode (not from positions)
-  const after = (sim.mode==="elastic")
-      ? elasticAfter(sim.m1, sim.v1, sim.m2, sim.v2)
-      : inelasticAfter(sim.m1, sim.v1, sim.m2, sim.v2);
+document.getElementById('btnReset').addEventListener('click', () => {
+  state.running = false;
+  state.x1 = 50; state.x2 = 250;
+  cancelAnimationFrame(animationId);
+  draw();
+});
 
-  const pF = pTotal(sim.m1, after.v1p, sim.m2, after.v2p);
-  document.getElementById("pFin").textContent = round2(pF);
-  document.getElementById("pDiff").textContent = round2(pF - pI);
+function checkQuiz() {
+  const ans = document.getElementById('quizAns').value;
+  const feedback = document.getElementById('quizFeedback');
+  if (ans == 2) {
+    feedback.innerText = "Дұрыс! (2*4 + 2*0) / (2+2) = 2 м/с";
+    feedback.style.color = "var(--accent2)";
+  } else {
+    feedback.innerText = "Қате. Қайтадан есептеп көр.";
+    feedback.style.color = "var(--danger)";
+  }
 }
-function round2(x){ return (Math.round(x*100)/100).toString(); }
 
-function drawSim(){
-  const w=simCanvas.width, h=simCanvas.height;
-  sctx.clearRect(0,0,w,h);
+draw(); // Initial draw
+</script>
 
-  // world mapping
-  const margin=60;
-  const trackY = h*0.55;
-  const xToPx = (x)=> margin + (x/8.0)*(w-2*margin); // x in [0..8]
-
-  // track
-  sctx.globalAlpha = 1;
-  sctx.strokeStyle = "
+</body>
+</html>
